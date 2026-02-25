@@ -1,0 +1,12 @@
+[33mYou are using Node.js 20.18.0. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.[39m
+[31m✗[39m Build failed in 2.52s
+[31merror during build:
+[31mCould not resolve "./AuthModal.css" from "src/components/AuthModal.jsx"[31m
+file: [36mC:/Users/Administrator/Desktop/StyleUpSpaces/src/components/AuthModal.jsx[31m
+    at getRollupError (file:///C:/Users/Administrator/Desktop/StyleUpSpaces/node_modules/rollup/dist/es/shared/parseAst.js:402:41)
+    at error (file:///C:/Users/Administrator/Desktop/StyleUpSpaces/node_modules/rollup/dist/es/shared/parseAst.js:398:42)
+    at ModuleLoader.handleInvalidResolvedId (file:///C:/Users/Administrator/Desktop/StyleUpSpaces/node_modules/rollup/dist/es/shared/node-entry.js:21710:24)
+    at file:///C:/Users/Administrator/Desktop/StyleUpSpaces/node_modules/rollup/dist/es/shared/node-entry.js:21670:26[39m
+\n[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 1045 modules transformed.

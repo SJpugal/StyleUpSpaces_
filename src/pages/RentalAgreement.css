@@ -1,0 +1,339 @@
+.rental-page {
+    background-color: var(--bg-white);
+}
+
+/* Hero Section */
+.rental-hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+    overflow: hidden;
+}
+
+.rental-hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.rental-hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.rental-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.rental-hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.rental-hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.rental-hero-cta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+}
+
+.cta-btn-alt {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+}
+
+.rental-trust-metrics {
+    display: flex;
+    gap: 20px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.rental-trust-metrics span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rental-trust-metrics svg {
+    color: #28a745;
+}
+
+.rental-hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-doc-img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.5s ease;
+}
+
+.hero-doc-img:hover {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+/* Features Section */
+.rental-features {
+    padding: 80px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-top: -10px;
+    margin-bottom: 50px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    background: var(--bg-white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.feature-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+    border-color: rgba(var(--primary-color-rgb), 0.3);
+}
+
+.feature-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.feature-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Pricing Section */
+.rental-pricing {
+    padding: 80px 0;
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.pricing-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px 30px;
+    position: relative;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+}
+
+.pricing-card.popular {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(var(--primary-color-rgb), 0.15);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.plan-title {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.plan-price {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.plan-price .amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    flex: 1;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+.plan-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+/* How It Works Timeline */
+.rental-how-it-works {
+    padding: 80px 0;
+}
+
+.steps-timeline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 50px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.timeline-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 6px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.timeline-step h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.timeline-step p {
+    color: var(--text-light);
+    max-width: 250px;
+    line-height: 1.5;
+}
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: var(--border-color);
+    margin-top: 25px;
+    z-index: 1;
+    min-width: 50px;
+}
+
+@media (max-width: 768px) {
+    .rental-hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .rental-hero-cta {
+        justify-content: center;
+    }
+
+    .rental-trust-metrics {
+        justify-content: center;
+    }
+
+    .steps-timeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .step-line {
+        display: none;
+    }
+}

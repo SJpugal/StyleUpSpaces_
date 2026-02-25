@@ -1,0 +1,14 @@
+.home-service-page {
+    position: relative;
+    min-height: 100vh;
+    background-color: #f8f9fc;
+    /* A very soft, modern pale blue-gray accent that coordinates well with the Navy primary color */
+}
+
+/* Ensure the banner contrasts nicely if the background is pale */
+.home-service-banner {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #343b59 100%);
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 20px;
+}

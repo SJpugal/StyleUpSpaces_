@@ -1,0 +1,381 @@
+.schedule-page {
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+.schedule-main {
+    padding: 60px 0;
+}
+
+.schedule-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Left Content Area */
+.schedule-content {
+    flex: 1;
+}
+
+/* Progress Header */
+.schedule-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 20px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.progress-step.active {
+    opacity: 1;
+}
+
+.p-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-light);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-step.active .p-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+.progress-step span {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.progress-line {
+    flex: 1;
+    height: 2px;
+    background: var(--border-color);
+    margin: 0 15px;
+    transform: translateY(-12px);
+}
+
+/* Step Boxes */
+.schedule-step-box {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.schedule-step-box h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.text-light-muted {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.icon-left {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.has-icon {
+    padding-left: 45px !important;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+textarea.form-input {
+    resize: vertical;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+/* Date & Time Selection */
+.date-chips {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-top: 15px;
+}
+
+.date-chip {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 90px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.date-chip:hover {
+    border-color: var(--primary-color);
+}
+
+.date-chip.selected {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.date-chip.selected * {
+    color: white !important;
+}
+
+.day-name {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+.day-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 4px 0;
+}
+
+.day-month {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.time-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    justify-content: center;
+}
+
+.time-chip:hover {
+    border-color: var(--primary-color);
+}
+
+.time-chip.selected {
+    background: rgba(var(--primary-color-rgb), 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+/* Summary Step */
+.s-box {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.s-box-header {
+    background: var(--bg-light);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.s-box-header button {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.s-box-content {
+    padding: 20px;
+}
+
+.s-box-content p {
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.payment-info {
+    background: rgba(var(--primary-color-rgb), 0.05);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.info-row.highlight {
+    color: var(--primary-color);
+    font-weight: 700;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 10px;
+}
+
+.small-note {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+/* Right Sidebar */
+.schedule-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.sidebar-card {
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-card h4 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.perks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.perks-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.perks-list li:last-child {
+    margin-bottom: 0;
+}
+
+.perks-list strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+
+.perks-list p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* Animations */
+.animation-fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .schedule-container {
+        flex-direction: column;
+    }
+
+    .schedule-sidebar {
+        width: 100%;
+    }
+}

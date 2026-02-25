@@ -1,0 +1,29 @@
+.home-page {
+    position: relative;
+    min-height: 100vh;
+}
+
+.home-background-logo {
+    position: fixed;
+    /* Fixed so it covers the entire scrollable area */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    /* 90% of viewport width */
+    height: 90vh;
+    /* 90% of viewport height */
+    max-width: 1200px;
+    object-fit: contain;
+    border-radius: 50%;
+    /* Make the background logo circular */
+    background-color: var(--primary-color);
+    /* Fill the circle perfectly with the logo's core color */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+    /* Soft, huge shadow for premium blending */
+    opacity: 1;
+    /* Fully visible original colors */
+    pointer-events: none;
+    z-index: -1;
+    /* Place it behind absolutely everything else */
+}

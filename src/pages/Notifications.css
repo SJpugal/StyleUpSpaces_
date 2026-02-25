@@ -1,0 +1,129 @@
+.notifications-page {
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+.notifications-main {
+    padding: 60px 0;
+}
+
+.notifications-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notifications-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 2rem;
+    color: var(--text-dark);
+}
+
+.header-icon {
+    color: var(--primary-color);
+}
+
+.mark-read-btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-color: var(--border-color);
+    color: var(--text-dark);
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notification-card {
+    display: flex;
+    gap: 20px;
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.notification-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Simulate an unread state visually */
+.notification-card:nth-child(1) {
+    border-left-color: var(--primary-color);
+    background-color: #f8faff;
+    /* Very subtle tint */
+}
+
+.noti-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.noti-content {
+    flex: 1;
+}
+
+.noti-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.noti-title-row h4 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.noti-date {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.noti-message {
+    color: var(--text-dark);
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.empty-notifications {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.empty-notifications h3 {
+    margin: 20px 0 10px;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+}
+
+.empty-notifications p {
+    color: var(--text-light);
+}

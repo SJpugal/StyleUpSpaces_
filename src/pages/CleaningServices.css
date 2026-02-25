@@ -1,0 +1,351 @@
+/* Reuse identical layout structure as ElectricianServices but with distinct color themes */
+.cleaning-page {
+    background-color: var(--bg-white);
+}
+
+/* Hero Section */
+.cleaning-hero {
+    /* Different gradient for cleaning - fresh aqua/teal vibe */
+    background: linear-gradient(135deg, #e6f7f5 0%, #ffffff 100%);
+    padding: 60px 0;
+    margin-bottom: 40px;
+}
+
+.cleaning-hero-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.cleaning-hero-text {
+    flex: 1;
+}
+
+.cleaning-hero-text h1 {
+    font-size: 2.8rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.cleaning-hero-text p {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.trust-badges {
+    display: flex;
+    gap: 20px;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 30px;
+    box-shadow: var(--shadow-sm);
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.badge-item svg {
+    color: var(--primary-color);
+}
+
+.cleaning-hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-cleaning-img {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+/* "Small Small Boxes" Grid Section */
+.appliances-section {
+    padding: 60px 0;
+    position: relative;
+    padding-bottom: 150px;
+    /* Space for the floating cart */
+}
+
+.appliances-grid {
+    display: grid;
+    /* This creates the small boxes layout */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.appliance-box {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.appliance-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(var(--primary-color-rgb), 0.4);
+}
+
+.appliance-box.selected {
+    border-color: var(--primary-color);
+    background: rgba(var(--primary-color-rgb), 0.02);
+}
+
+.appliance-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.appliance-box:hover::before,
+.appliance-box.selected::before {
+    transform: scaleX(1);
+}
+
+.appliance-icon {
+    width: 65px;
+    height: 65px;
+    background: rgba(var(--primary-color-rgb), 0.05);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.appliance-box:hover .appliance-icon,
+.appliance-box.selected .appliance-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+.appliance-name {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.appliance-price {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.appliance-price strong {
+    color: var(--text-dark);
+    font-size: 1rem;
+    margin-left: 4px;
+}
+
+.appliance-add {
+    width: 100%;
+    margin-top: auto;
+}
+
+.add-btn {
+    width: 100%;
+    background: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.appliance-box:hover .add-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Quantity Controls for Selected State */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+.qty-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.qty-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.qty-number {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Guarantees Section */
+.cleaning-guarantees {
+    padding: 80px 0;
+    background-color: #f8faff;
+}
+
+.guarantees-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.guarantee-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.g-icon-wrapper {
+    margin-bottom: 20px;
+    display: inline-flex;
+}
+
+.guarantee-card h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.guarantee-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.text-success {
+    color: #28a745;
+}
+
+.text-warning {
+    color: #ffc107;
+}
+
+/* Floating Cart Simulator */
+.floating-cart-banner {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 600px;
+    z-index: 100;
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.cart-banner-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-total {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.cart-items {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.compact-btn {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+}
+
+/* Animations */
+.animation-slide-up {
+    animation: slideUp 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .cleaning-hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .trust-badges {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .appliances-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on mobile */
+    }
+
+    .guarantees-grid {
+        grid-template-columns: 1fr;
+    }
+}
