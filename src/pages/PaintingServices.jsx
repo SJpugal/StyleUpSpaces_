@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { ServicesContext } from '../context/ServicesContext';
 import { Paintbrush, Droplet, ShieldCheck, Home, Maximize, Clock, CheckCircle, ChevronRight, Plus, Minus, Info } from 'lucide-react';
 import './PaintingServices.css';
@@ -76,7 +75,7 @@ const PaintingServices = () => {
 
     return (
         <div className="page-wrapper painting-page">
-            <Header />
+            
             <main>
                 {/* Hero Section */}
                 <section className="painting-hero">

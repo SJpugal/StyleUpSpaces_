@@ -325,3 +325,256 @@
     color: var(--text-light);
     line-height: 1.6;
 }
+
+/* Quote View Styles */
+.pm-quote-container {
+    padding: 40px 0 80px;
+}
+
+.pm-quote-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+}
+
+@media (max-width: 992px) {
+    .pm-quote-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pm-quote-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.pm-quote-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+}
+
+.pm-quote-card h3 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+}
+
+/* Location Summary */
+.pm-locations-summary {
+    position: relative;
+}
+
+.pm-loc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.pm-loc-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pm-loc-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.pm-loc-value {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.pm-loc-divider {
+    height: 30px;
+    width: 2px;
+    background: var(--border-color);
+    margin: 10px 0 10px 17px;
+}
+
+/* Config Grid */
+.pm-config-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 576px) {
+    .pm-config-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pm-config-value {
+    padding: 12px 15px;
+    background: var(--bg-light);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+}
+
+/* Tier Options */
+.pm-tier-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .pm-tier-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pm-tier-card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    background: var(--bg-white);
+}
+
+.pm-tier-card:hover {
+    border-color: rgba(var(--primary-rgb), 0.5);
+}
+
+.pm-tier-card.active {
+    border-color: var(--primary-color);
+    background: rgba(var(--primary-rgb), 0.02);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.1);
+}
+
+.pm-tier-card.premium {
+    border-color: #ffd700;
+}
+
+.pm-tier-card.premium.active {
+    background: rgba(255, 215, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.pm-tier-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: #ffd700;
+    color: #333;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.pm-tier-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pm-tier-card.active .pm-tier-header {
+    color: var(--primary-color);
+}
+
+.pm-tier-card.premium.active .pm-tier-header {
+    color: #b8860b;
+}
+
+.pm-tier-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pm-tier-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.pm-tier-features li svg {
+    color: var(--success-color);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Sidebar Pricing */
+.pm-price-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 25px;
+    border: 1px solid var(--primary-color);
+    position: sticky;
+    top: 100px;
+}
+
+.pm-price-card h3 {
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.pm-price-breakdown {
+    margin-bottom: 25px;
+}
+
+.pm-price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    font-size: 1.05rem;
+}
+
+.pm-price-row.pm-price-total {
+    border-top: 2px dashed var(--border-color);
+    padding-top: 15px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.pm-price-note {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.pm-book-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.pm-trust-card {
+    background: rgba(var(--success-rgb), 0.05);
+    border: 1px solid rgba(var(--success-rgb), 0.2);
+    border-radius: var(--border-radius);
+    padding: 15px;
+}

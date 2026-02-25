@@ -1,73 +1,71 @@
 .hero {
     position: relative;
-    padding: 80px 0;
-    /* Removed background-color to let the global logo shine through */
+    padding: 100px 0;
     color: white;
-    /* Changed text back to pure white to contrast strongly against the massive dark logo */
-    min-height: 400px;
+    min-height: 500px;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-background-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    /* Maximum width before hitting sides */
-    height: 90%;
-    /* Maximum height before hitting top/bottom */
-    max-width: 1200px;
-    object-fit: contain;
-    /* Guarantee no clipping */
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1;
+    display: none;
+    /* Removed the giant faint logo */
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
     width: 100%;
+    margin-top: -40px;
+    /* Slight lift */
 }
 
 .hero-title {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
     text-align: center;
-    font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.5px;
 }
 
 .search-widget {
     background: var(--bg-white);
-    border-radius: var(--border-radius);
-    padding: 10px;
-    max-width: 800px;
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    max-width: 900px;
+    /* Wider to match NoBroker */
     margin: 0 auto;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
     color: var(--text-dark);
 }
 
 .widget-tabs {
     display: flex;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 15px;
+    border-bottom: 2px solid var(--bg-light);
+    margin-bottom: 24px;
+    gap: 10px;
 }
 
 .tab {
-    padding: 15px 30px;
+    padding: 12px 24px;
     font-weight: 600;
+    font-size: 1.05rem;
     cursor: pointer;
     color: var(--text-light);
     border-bottom: 3px solid transparent;
     transition: var(--transition);
+    border-radius: 8px 8px 0 0;
 }
 
 .tab:hover {
-    color: var(--text-dark);
+    color: var(--primary-color);
+    background-color: var(--bg-light);
 }
 
 .tab.active {
@@ -77,8 +75,8 @@
 
 .widget-search-bar {
     display: flex;
-    gap: 10px;
-    padding: 10px;
+    gap: 16px;
+    /* Spaced out search input and button */
     position: relative;
 }
 
@@ -89,7 +87,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    padding: 8px 15px;
+    padding: 12px 20px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     background-color: var(--bg-white);
@@ -97,22 +95,27 @@
     cursor: text;
 }
 
+.search-input-container:hover {
+    border-color: #cbd5e1;
+}
+
 .search-input-container.focused {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(36, 41, 64, 0.1);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
 }
 
 .location-tag {
     display: flex;
     align-items: center;
     gap: 6px;
-    background-color: #f1f2f6;
-    padding: 6px 12px;
+    background-color: #fee2e2;
+    /* Light red tint */
+    padding: 6px 14px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    border: 1px solid #dfe4ea;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-hover);
+    border: 1px solid #fecaca;
     animation: fadeInTag 0.2s ease-out;
 }
 
@@ -129,7 +132,7 @@
 }
 
 .location-tag-text {
-    max-width: 120px;
+    max-width: 140px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -138,7 +141,7 @@
 .location-tag-remove {
     background: transparent;
     border: none;
-    color: var(--text-light);
+    color: var(--primary-hover);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,19 +152,24 @@
 }
 
 .location-tag-remove:hover {
-    color: #ff4757;
-    background-color: #ffeaa7;
+    color: white;
+    background-color: var(--primary-color);
 }
 
 .location-input {
     flex: 1;
-    min-width: 150px;
+    min-width: 180px;
     border: none;
     padding: 8px 0;
-    font-size: 16px;
+    font-size: 1.05rem;
     outline: none;
     font-family: var(--font-family);
     background: transparent;
+    color: var(--text-dark);
+}
+
+.location-input::placeholder {
+    color: #9ca3af;
 }
 
 .search-suggestions {

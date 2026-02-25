@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { ServicesContext, mapIconComponent } from '../context/ServicesContext';
 import { ShieldCheck, Clock, CheckCircle, Zap, Fan, Monitor, Power, Server, Lightbulb, BellRing, Plus, Minus, ChevronRight } from 'lucide-react';
 import './ElectricianServices.css';
@@ -51,7 +50,7 @@ const ElectricianServices = () => {
 
     return (
         <div className="page-wrapper electrician-page">
-            <Header />
+            
             <main>
                 {/* Hero Section */}
                 <section className="electrician-hero">

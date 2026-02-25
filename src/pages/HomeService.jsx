@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import Services from '../components/Services';
 import AdsAndMotto from '../components/AdsAndMotto';
 import './HomeService.css';
@@ -7,7 +6,7 @@ import './HomeService.css';
 const HomeService = () => {
     return (
         <div className="page-wrapper home-service-page">
-            <Header />
+            
             <main>
                 {/* A clean, modern banner for Home Service page using primary colors */}
                 <section className="home-service-banner">

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Search, MapPin, Filter, Home, Key, CheckCircle, ChevronRight, X } from 'lucide-react';
-import Header from '../components/Header';
 import './SearchResults.css';
 
 // Removing Mock Generator logic
@@ -51,7 +50,7 @@ const SearchResults = () => {
 
     return (
         <div className="page-wrapper search-results-page">
-            <Header />
+            
 
             {/* Sticky Search Summary Bar */}
             <div className="search-summary-bar">

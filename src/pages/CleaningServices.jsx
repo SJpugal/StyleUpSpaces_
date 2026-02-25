@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { ShieldCheck, Clock, CheckCircle, Home, Bath, Droplets, SprayCan, Sofa, Bug, Car, Sparkles, Plus, Minus, ChevronRight } from 'lucide-react';
 import { ServicesContext, mapIconComponent } from '../context/ServicesContext';
 import './CleaningServices.css';
@@ -52,7 +51,7 @@ const CleaningServices = () => {
 
     return (
         <div className="page-wrapper cleaning-page">
-            <Header />
+            
             <main>
                 {/* Hero Section */}
                 <section className="cleaning-hero">

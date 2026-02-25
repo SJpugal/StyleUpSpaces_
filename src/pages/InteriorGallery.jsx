@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Header from '../components/Header';
 import { ServicesContext } from '../context/ServicesContext';
 import { Search, ChevronRight, Home, Layout, Filter } from 'lucide-react';
 import './InteriorGallery.css';
@@ -23,7 +22,7 @@ const InteriorGallery = () => {
     // Category visual mapping for NoBroker-style tab cards
     const categoryGraphics = {
         'All': 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=200',
-        'Living Room': 'https://images.unsplash.com/photo-1583847268964-b28ce8f30321?auto=format&fit=crop&q=80&w=200',
+        'Living Room': 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800',
         'Bed Room': 'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=200',
         'Bedroom': 'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=200',
         'Kitchen': 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=200',
@@ -66,7 +65,7 @@ const InteriorGallery = () => {
 
     return (
         <div className="page-wrapper gallery-page">
-            <Header />
+            
             <main>
                 {/* Minimal Header */}
                 <div className="gallery-header">

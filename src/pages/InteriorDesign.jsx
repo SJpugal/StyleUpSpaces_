@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { ChevronLeft, ChevronRight, CheckCircle, Clock, Home, Award } from 'lucide-react';
 import './InteriorDesign.css';
 
@@ -21,7 +20,7 @@ const heroImages = [
 ];
 
 const trendingIdeas = [
-    { id: 1, title: 'Living Room', image: 'https://images.unsplash.com/photo-1583847268964-b28ce8f30321?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+    { id: 1, title: 'Living Room', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=100' },
     { id: 2, title: 'Bed Room', image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
     { id: 3, title: 'Study Room', image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
     { id: 4, title: 'Dining Room', image: 'https://images.unsplash.com/photo-1604578762246-41134e37f9cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
@@ -50,7 +49,7 @@ const InteriorDesign = () => {
 
     return (
         <div className="page-wrapper interior-design-page">
-            <Header />
+            
             <main>
                 {/* Hero Carousel Section */}
                 <section className="interior-hero">

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { ArrowLeft, Home, MapPin, IndianRupee, Send, Loader } from 'lucide-react';
 import './InteriorEnquiry.css';
 
@@ -160,7 +159,7 @@ const InteriorEnquiry = () => {
 
     return (
         <div className="page-wrapper enquiry-page">
-            <Header />
+            
 
             <main className="enquiry-main">
                 <div className="container enquiry-container">

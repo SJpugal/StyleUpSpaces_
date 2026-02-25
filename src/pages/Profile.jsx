@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Phone, Mail, MapPin, Edit2, LogOut, Settings, Home } from 'lucide-react';
-import Header from '../components/Header';
 import Login from './Login'; // Import Login component
 import './Profile.css';
 
@@ -53,7 +52,7 @@ const Profile = () => {
 
     return (
         <div className="page-wrapper">
-            <Header />
+            
             <main className="profile-page">
                 <div className="profile-container">
 

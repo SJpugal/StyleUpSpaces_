@@ -55,9 +55,21 @@ const Header = () => {
                             <button className="btn btn-signup" onClick={() => navigate('/signup')}>Sign Up</button>
                         </div>
                     ) : (
-                        <div className="menu-profile" onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }}>
-                            <User size={20} />
-                            <span style={{ fontSize: '0.9rem', fontWeight: '600', marginLeft: '8px' }}>{user?.name?.split(' ')[0] || 'User'}</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                            <div className="menu-profile" onClick={() => navigate('/profile')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                                <User size={20} />
+                                <span style={{ fontSize: '0.9rem', fontWeight: '600', marginLeft: '8px' }}>{user?.name?.split(' ')[0] || 'User'}</span>
+                            </div>
+                            <button
+                                className="btn btn-login"
+                                onClick={() => {
+                                    localStorage.removeItem('styleUpUser');
+                                    window.location.href = '/';
+                                }}
+                                style={{ background: 'transparent', border: '1px solid var(--text-muted)', color: 'var(--text-dark)' }}
+                            >
+                                Logout
+                            </button>
                         </div>
                     )}
                     <div className="mobile-menu-toggle ml-3">

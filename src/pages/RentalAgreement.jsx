@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { CheckCircle, Clock, FileText, Truck, ShieldCheck, PenTool, ChevronRight } from 'lucide-react';
 import './RentalAgreement.css';
 
@@ -76,7 +75,7 @@ const RentalAgreement = () => {
 
     return (
         <div className="page-wrapper rental-page">
-            <Header />
+            
             <main>
                 {/* Hero Section */}
                 <section className="rental-hero">

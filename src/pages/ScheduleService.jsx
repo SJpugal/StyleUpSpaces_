@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { MapPin, Calendar, Clock, ChevronRight, Home, Navigation, CheckCircle, ShieldCheck } from 'lucide-react';
 import './ScheduleService.css';
 
@@ -126,7 +125,7 @@ const ScheduleService = () => {
 
     return (
         <div className="page-wrapper schedule-page">
-            <Header />
+            
             <main className="schedule-main">
                 <div className="container schedule-container">
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { Check, ChevronRight, ChevronLeft, Building, User, FileText, CreditCard } from 'lucide-react';
 import './AgreementForm.css';
 
@@ -275,7 +274,7 @@ const AgreementForm = () => {
 
     return (
         <div className="page-wrapper agreement-wizard-page">
-            <Header />
+            
             <main className="wizard-main">
                 <div className="container wizard-container">
 

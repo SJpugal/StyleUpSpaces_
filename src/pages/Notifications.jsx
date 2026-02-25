@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import { Bell, Info, CheckCircle, AlertTriangle } from 'lucide-react';
 import './Notifications.css';
 
@@ -37,7 +36,7 @@ const Notifications = () => {
 
     return (
         <div className="page-wrapper notifications-page">
-            <Header />
+            
             <main className="notifications-main">
                 <div className="container notifications-container">
                     <div className="notifications-header">

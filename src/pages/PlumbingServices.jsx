@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { Plus, Minus, Search, ShieldCheck, Clock, CheckCircle, Navigation, Info, ShoppingCart, ChevronRight } from 'lucide-react';
 import './PlumbingServices.css';
 
@@ -111,7 +110,7 @@ const PlumbingServices = () => {
 
     return (
         <div className="page-wrapper plumbing-page">
-            <Header />
+            
             <main>
                 {/* Minimal Header */}
                 <div className="plumbing-header">

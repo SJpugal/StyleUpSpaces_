@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ServicesProvider } from './context/ServicesContext';
+import MainLayout from './layouts/MainLayout';
+import AdminLayout from './layouts/AdminLayout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import Home from './pages/Home';
 import HomeService from './pages/HomeService';
@@ -30,31 +33,38 @@ function App() {
       <Router>
         <div className="app">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/home-service" element={<HomeService />} />
-            <Route path="/packers-and-movers" element={<PackersAndMovers />} />
-            <Route path="/interior-design" element={<InteriorDesign />} />
-            <Route path="/interior-enquiry" element={<InteriorEnquiry />} />
-            <Route path="/search" element={<SearchResults />} />
-            <Route path="/rental-agreement" element={<RentalAgreement />} />
-            <Route path="/create-agreement" element={<AgreementForm />} />
-            <Route path="/electrician-services" element={<ElectricianServices />} />
-            <Route path="/cleaning-services" element={<CleaningServices />} />
-            <Route path="/painting-services" element={<PaintingServices />} />
-            <Route path="/plumbing-services" element={<PlumbingServices />} />
-            <Route path="/interior-gallery" element={<InteriorGallery />} />
-            <Route path="/schedule-service" element={<ScheduleService />} />
+            {/* Public/User Routes with MainLayout */}
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/home-service" element={<HomeService />} />
+              <Route path="/packers-and-movers" element={<PackersAndMovers />} />
+              <Route path="/interior-design" element={<InteriorDesign />} />
+              <Route path="/search" element={<SearchResults />} />
+              <Route path="/electrician-services" element={<ElectricianServices />} />
+              <Route path="/cleaning-services" element={<CleaningServices />} />
+              <Route path="/painting-services" element={<PaintingServices />} />
+              <Route path="/plumbing-services" element={<PlumbingServices />} />
+              <Route path="/interior-gallery" element={<InteriorGallery />} />
 
-            {/* Admin Portal */}
-            <Route path="/admin-login" element={<AdminLogin />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+              {/* Protected Routes - require login */}
+              <Route element={<ProtectedRoute />}>
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/notifications" element={<Notifications />} />
+                <Route path="/interior-enquiry" element={<InteriorEnquiry />} />
+                <Route path="/rental-agreement" element={<RentalAgreement />} />
+                <Route path="/create-agreement" element={<AgreementForm />} />
+                <Route path="/schedule-service" element={<ScheduleService />} />
+              </Route>
+            </Route>
+
+            {/* Admin Portal with AdminLayout */}
+            <Route element={<AdminLayout />}>
+              <Route path="/admin-login" element={<AdminLogin />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+            </Route>
           </Routes>
-          {/* Floating Components persists across all routes */}
-          <Chatbot />
         </div>
       </Router>
     </ServicesProvider>

@@ -43,10 +43,10 @@ const Login = () => {
                 email: email || 'customer@example.com',
                 location: 'Bangalore, India'
             };
-            localStorage.setItem('styleup_user', JSON.stringify(sessionData));
+            localStorage.setItem('styleUpUser', JSON.stringify(sessionData));
 
-            // After successful verification, go to the Profile dashboard!
-            navigate('/profile');
+            // After successful verification, go to the Home page
+            window.location.href = '/';
         } else {
             alert('Please enter a valid 6-digit OTP code.');
         }

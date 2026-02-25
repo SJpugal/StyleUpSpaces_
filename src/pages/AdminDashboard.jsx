@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { ServicesContext, mapIconComponent } from '../context/ServicesContext';
 import { Settings, Users, Calendar, LayoutDashboard, Edit3, Save, X, Plus, MessageSquare, CheckCircle, XCircle, Home, Trash2, MapPin, Loader } from 'lucide-react';
 import './AdminDashboard.css';
@@ -27,6 +26,7 @@ const AdminDashboard = () => {
     });
 
     const [isAddingGallery, setIsAddingGallery] = useState(false);
+    const [editingGalleryId, setEditingGalleryId] = useState(null);
     const [newGalleryForm, setNewGalleryForm] = useState({
         image: '', title: '', category: 'Living Room'
     });
@@ -35,6 +35,17 @@ const AdminDashboard = () => {
     const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
     const [isLoadingLocations, setIsLoadingLocations] = useState(false);
     const suggestionRef = useRef(null);
+
+    // P&M Pricing State
+    const defaultPMPricing = {
+        '1 BHK': 4000,
+        '2 BHK': 7500,
+        '3+ BHK': 12000,
+        'Few Items': 2500,
+        'Vehicle Transport': 3500,
+        'PremiumMultiplier': 1.3
+    };
+    const [pmPricing, setPmPricing] = useState(defaultPMPricing);
 
     // Auth Check: Force redirect if no valid admin session is found
     useEffect(() => {
@@ -57,6 +68,16 @@ const AdminDashboard = () => {
             } catch (e) {
                 console.error("Error parsing properties", e);
                 setProperties([]);
+            }
+
+            // Load P&M Pricing
+            try {
+                const storedPricing = JSON.parse(localStorage.getItem('styleUpPMPricing'));
+                if (storedPricing) {
+                    setPmPricing(storedPricing);
+                }
+            } catch (e) {
+                console.error("Error parsing PM Pricing", e);
             }
         }
     }, [navigate]);
@@ -285,24 +306,44 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleEditGallery = (img) => {
+        setEditingGalleryId(img.id);
+        setNewGalleryForm({
+            image: img.image,
+            title: img.title,
+            category: img.category
+        });
+        setIsAddingGallery(true);
+    };
+
     const handleSaveGallery = () => {
         if (!newGalleryForm.title || !newGalleryForm.image) {
             alert("Please provide the Image URL and Title");
             return;
         }
 
-        const newItem = {
-            id: `ig_${Date.now()}`,
-            image: newGalleryForm.image,
-            title: newGalleryForm.title,
-            category: newGalleryForm.category
-        };
+        let updated;
 
-        const updated = [newItem, ...interiorGallery];
+        if (editingGalleryId) {
+            updated = interiorGallery.map(ig =>
+                ig.id === editingGalleryId ? { ...ig, ...newGalleryForm } : ig
+            );
+            alert("Image updated in Interior Gallery!");
+        } else {
+            const newItem = {
+                id: `ig_${Date.now()}`,
+                image: newGalleryForm.image,
+                title: newGalleryForm.title,
+                category: newGalleryForm.category
+            };
+            updated = [newItem, ...interiorGallery];
+            alert("Image uploaded to Interior Gallery!");
+        }
+
         updateInteriorGallery(updated);
         setIsAddingGallery(false);
+        setEditingGalleryId(null);
         setNewGalleryForm({ image: '', title: '', category: 'Living Room' });
-        alert("Image uploaded to Interior Gallery!");
     };
 
     const handleDeleteGallery = (id) => {
@@ -312,9 +353,19 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleSavePMPricing = () => {
+        try {
+            localStorage.setItem('styleUpPMPricing', JSON.stringify(pmPricing));
+            alert('Packers & Movers pricing updated successfully!');
+        } catch (e) {
+            console.error("Failed to save PM pricing", e);
+            alert('Error saving pricing.');
+        }
+    };
+
     return (
         <div className="admin-layout">
-            <Header />
+
             <div className="admin-container">
                 {/* Admin Sidebar */}
                 <aside className="admin-sidebar">
@@ -337,6 +388,7 @@ const AdminDashboard = () => {
                         </a>
                         <a href="#properties" className={`nav-item ${activeNav === 'properties' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setActiveNav('properties'); }}><Home size={18} /> Properties</a>
                         <a href="#interior" className={`nav-item ${activeNav === 'interior' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setActiveNav('interior'); }}><LayoutDashboard size={18} /> Interior Gallery</a>
+                        <a href="#pm-settings" className={`nav-item ${activeNav === 'pm_settings' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setActiveNav('pm_settings'); }}><Settings size={18} /> P&M Settings</a>
                         <a href="#users" className={`nav-item ${activeNav === 'users' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setActiveNav('users'); }}><Users size={18} /> Users</a>
                     </nav>
                 </aside>
@@ -344,7 +396,7 @@ const AdminDashboard = () => {
                 {/* Main Admin Content */}
                 <main className="admin-main">
                     <header className="admin-header">
-                        <h2>{activeNav === 'services' ? 'Manage Services Data' : activeNav === 'dashboard' ? 'Overview' : activeNav === 'properties' ? 'Manage Properties' : activeNav === 'users' ? 'Manage Users' : 'Incoming Bookings'}</h2>
+                        <h2>{activeNav === 'services' ? 'Manage Services Data' : activeNav === 'dashboard' ? 'Overview' : activeNav === 'properties' ? 'Manage Properties' : activeNav === 'users' ? 'Manage Users' : activeNav === 'pm_settings' ? 'P&M Pricing Settings' : 'Incoming Bookings'}</h2>
                         {activeNav === 'services' && (
                             <button className="btn btn-primary" onClick={handleAddNew}>
                                 <Plus size={16} /> Add New Service
@@ -578,6 +630,77 @@ const AdminDashboard = () => {
                                 </tbody>
                             </table>
                         )}
+
+                        {activeNav === 'pm_settings' && (
+                            <div className="pm-settings-container">
+                                <h3>Packers and Movers Pricing Configuration</h3>
+                                <p className="text-light-muted mb-4">Set the base pricing for different property sizes. These values will be calculated dynamically on the frontend when users request an estimate.</p>
+
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '800px' }}>
+                                    <div className="form-group">
+                                        <label>1 BHK / RK Base Price (₹)</label>
+                                        <input
+                                            type="number"
+                                            className="form-input"
+                                            value={pmPricing['1 BHK']}
+                                            onChange={(e) => setPmPricing({ ...pmPricing, '1 BHK': parseFloat(e.target.value) || 0 })}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>2 BHK Base Price (₹)</label>
+                                        <input
+                                            type="number"
+                                            className="form-input"
+                                            value={pmPricing['2 BHK']}
+                                            onChange={(e) => setPmPricing({ ...pmPricing, '2 BHK': parseFloat(e.target.value) || 0 })}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>3+ BHK Base Price (₹)</label>
+                                        <input
+                                            type="number"
+                                            className="form-input"
+                                            value={pmPricing['3+ BHK']}
+                                            onChange={(e) => setPmPricing({ ...pmPricing, '3+ BHK': parseFloat(e.target.value) || 0 })}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Few Items Base Price (₹)</label>
+                                        <input
+                                            type="number"
+                                            className="form-input"
+                                            value={pmPricing['Few Items']}
+                                            onChange={(e) => setPmPricing({ ...pmPricing, 'Few Items': parseFloat(e.target.value) || 0 })}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Vehicle Transport Price (₹)</label>
+                                        <input
+                                            type="number"
+                                            className="form-input"
+                                            value={pmPricing['Vehicle Transport']}
+                                            onChange={(e) => setPmPricing({ ...pmPricing, 'Vehicle Transport': parseFloat(e.target.value) || 0 })}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Premium Service Multiplier (e.g. 1.3 for +30%)</label>
+                                        <input
+                                            type="number"
+                                            step="0.1"
+                                            className="form-input"
+                                            value={pmPricing['PremiumMultiplier']}
+                                            onChange={(e) => setPmPricing({ ...pmPricing, 'PremiumMultiplier': parseFloat(e.target.value) || 1 })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="mt-4" style={{ borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
+                                    <button className="btn btn-primary" onClick={handleSavePMPricing}>
+                                        <Save size={16} /> Save P&M Pricing
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Interior Gallery View */}
@@ -585,7 +708,11 @@ const AdminDashboard = () => {
                         <div className="admin-content-card animation-fade-in" style={{ marginTop: '20px' }}>
                             <div className="box-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                                 <h2>Interior Design Gallery</h2>
-                                <button className="btn btn-primary btn-sm flex items-center gap-2" onClick={() => setIsAddingGallery(true)}>
+                                <button className="btn btn-primary btn-sm flex items-center gap-2" onClick={() => {
+                                    setEditingGalleryId(null);
+                                    setNewGalleryForm({ image: '', title: '', category: 'Living Room' });
+                                    setIsAddingGallery(true);
+                                }}>
                                     <Plus size={16} /> Add New Image
                                 </button>
                             </div>
@@ -610,9 +737,14 @@ const AdminDashboard = () => {
                                             <td><strong>{img.title}</strong></td>
                                             <td><span className="code-tag">{img.category}</span></td>
                                             <td>
-                                                <button className="action-btn delete" onClick={() => handleDeleteGallery(img.id)} title="Delete Image">
-                                                    <Trash2 size={16} />
-                                                </button>
+                                                <div className="action-buttons">
+                                                    <button className="action-btn edit" onClick={() => handleEditGallery(img)} title="Edit Image">
+                                                        <Edit3 size={16} />
+                                                    </button>
+                                                    <button className="action-btn delete" onClick={() => handleDeleteGallery(img.id)} title="Delete Image">
+                                                        <Trash2 size={16} />
+                                                    </button>
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}
@@ -819,13 +951,16 @@ const AdminDashboard = () => {
                     </div>
                 )}
 
-                {/* Add New Gallery Image Modal */}
+                {/* Add/Edit New Gallery Image Modal */}
                 {isAddingGallery && (
                     <div className="admin-modal-overlay" style={{ zIndex: 99999 }}>
                         <div className="admin-modal-content animation-fade-in" style={{ maxWidth: '600px' }}>
                             <div className="modal-header">
-                                <h3>Add to Interior Gallery</h3>
-                                <button className="close-btn" onClick={() => setIsAddingGallery(false)}>
+                                <h3>{editingGalleryId ? 'Edit Interior Image' : 'Add to Interior Gallery'}</h3>
+                                <button className="close-btn" onClick={() => {
+                                    setIsAddingGallery(false);
+                                    setEditingGalleryId(null);
+                                }}>
                                     <X size={20} />
                                 </button>
                             </div>
@@ -870,9 +1005,12 @@ const AdminDashboard = () => {
                                 </div>
                             </div>
                             <div className="modal-actions mt-4" style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', borderTop: '1px solid var(--border-color)', paddingTop: '15px' }}>
-                                <button type="button" className="btn btn-outline" onClick={() => setIsAddingGallery(false)}>Cancel</button>
+                                <button type="button" className="btn btn-outline" onClick={() => {
+                                    setIsAddingGallery(false);
+                                    setEditingGalleryId(null);
+                                }}>Cancel</button>
                                 <button type="button" className="btn btn-primary" onClick={handleSaveGallery}>
-                                    <Save size={16} /> Save Image
+                                    <Save size={16} /> {editingGalleryId ? 'Update Image' : 'Save Image'}
                                 </button>
                             </div>
                         </div>
